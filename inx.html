@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster Digital Tauhid Asma' wa Sifat - Kelompok 5</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. RESET & VARIABLES */
+        :root {
+            --bg-dark: #070B19;
+            --panel-bg: rgba(15, 23, 42, 0.75);
+            --gold-primary: #C5A880;
+            --gold-light: #E5D0B3;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-color: rgba(197, 168, 128, 0.3);
+            --red-accent: #EF4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #030712;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* 2. THE POSTER CANVAS (A4-ish Proportion for Printing/Screenshots) */
+        .poster-canvas {
+            width: 1000px;
+            background-color: var(--bg-dark);
+            border: 3px solid var(--gold-primary);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Background Islamic Motif Overlay */
+        .poster-canvas::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(180deg, rgba(7, 11, 25, 0.95) 0%, rgba(3, 7, 18, 0.98) 100%), 
+                              url('[attachment_0](attachment)');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.22;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Decorative Inner Frame Border */
+        .poster-canvas::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid rgba(197, 168, 128, 0.2);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .poster-canvas > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 3. POSTER HEADER */
+        .poster-header {
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .category-tag {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .sub-headline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 20px;
+            color: var(--gold-light);
+            margin-top: 15px;
+        }
+
+        /* 4. POSTER SECTIONS */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--panel-bg);
+            border: 1px solid rgba(197, 168, 128, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(8px);
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: var(--gold-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .card-title i {
+            font-size: 18px;
+        }
+
+        .card-body p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .card-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-body strong {
+            color: var(--gold-light);
+        }
+
+        /* Highlight box for key verses */
+        .verse-highlight {
+            background: rgba(197, 168, 128, 0.08);
+            border-left: 3px solid var(--gold-primary);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .verse-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* 5. METODE METODE UTAMA (Side by Side) */
+        .methods-section {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px dashed rgba(197, 168, 128, 0.25);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .methods-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .method-box {
+            background: rgba(7, 11, 25, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .method-box i {
+            font-size: 28px;
+            color: var(--gold-primary);
+            margin-bottom: 12px;
+        }
+
+        .method-box h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .method-box p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        /* 6. PILAR AKIDAH (4 Warnings) */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .pillar-card {
+            background: rgba(239, 68, 68, 0.03);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 8px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--red-accent);
+            background: rgba(239, 68, 68, 0.07);
+        }
+
+        .pillar-num {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            color: var(--red-accent);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .pillar-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .pillar-desc {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        /* 7. THE KAIDAH EMAS */
+        .kaidah-gold {
+            text-align: center;
+            background: radial-gradient(circle, rgba(197, 168, 128, 0.12) 0%, rgba(0,0,0,0) 80%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .kaidah-gold blockquote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 24px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .kaidah-gold cite {
+            color: var(--gold-primary);
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-style: normal;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .kaidah-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* 8. POSTER FOOTER / TEAM CARD */
+        .poster-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .footer-left strong {
+            color: var(--gold-primary);
+            text-transform: uppercase;
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .member-badge {
+            background: rgba(197, 168, 128, 0.1);
+            border: 1px solid rgba(197, 168, 128, 0.25);
+            border-radius: 6px;
+            padding: 8px 15px;
+            text-align: right;
+        }
+
+        .member-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .member-npm {
+            font-size: 10px;
+            color: var(--gold-primary);
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Digital Poster Container -->
+    <div class="poster-canvas">
+
+        <!-- Header Section -->
+        <div class="poster-header">
+            <span class="category-tag">Tugas Infografis Digital • Tauhid</span>
+            <h1 class="main-title">TAUHID ASMA’ WA SIFAT</h1>
+            <p class="sub-headline">“Allah Punya Tangan? Cara Memahami Sifat Allah Tanpa Tasybih”</p>
+        </div>
+
+        <!-- Middle Section: Context & Dilemma -->
+        <div class="grid-2col">
+            <!-- Left Side: Latar Belakang Masalah -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Isu Teologis: Sifat Khabariyah</span>
+                </div>
+                <div class="card-body">
+                    <p>Beberapa ayat Al-Qur'an dan Hadis menyebutkan lafal <strong>"Yad" (secara literal: Tangan)</strong> yang disandarkan kepada Allah SWT.</p>
+                    <p>Contohnya pada QS. Al-Fath ayat 10: <em>"Tangan Allah di atas tangan mereka"</em>. Masalah muncul ketika sebagian orang membayangkan sifat ini secara fisik layaknya organ makhluk (Tasybih), atau justru menolaknya mentah-mentah (Ta'thil).</p>
+                    <div class="verse-highlight">
+                        <span class="verse-text">“Metodologi Ahlussunnah membatasi pemahaman agar tetap murni: mengimani tanpa menyerupakan, dan mensucikan tanpa meniadakan.”</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Pendekatan Ahlussunnah -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Tantangan & Solusi Teologis</span>
+                </div>
+                <div class="card-body">
+                    <p>Akal manusia memiliki keterbatasan dalam memahami zat pencipta. Menyamakan Allah dengan ciptaan-Nya adalah bentuk kesesatan berpikir akidah.</p>
+                    <p>Oleh karena itu, Ulama Ahlussunnah wal Jama'ah merumuskan <strong>dua pendekatan sah</strong> yang terbukti menjaga kesucian akidah dari pemikiran antropomorfisme (menggambarkan Tuhan seperti manusia).</p>
+                    <p>Kedua metodologi ini digunakan secara harmonis oleh generasi ulama Salaf (terdahulu) dan Khalaf (kemudian).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 Methods Explanation -->
+        <div class="methods-section">
+            <h3 class="methods-title">Dua Metode Pemahaman yang Sah & Benar</h3>
+            <div class="methods-grid">
+                <!-- Method 1 -->
+                <div class="method-box">
+                    <i class="fa-solid fa-hands-holding"></i>
+                    <h4>1. METODE TAFWIDH (Mayoritas Salaf)</h4>
+                    <p>Menetapkan lafal sifat sebagaimana datangnya (mengimani "Yad" bagi Allah), namun menyerahkan sepenuhnya hakikat bentuk dan maknanya hanya kepada Allah SWT serta mutlak meyakini bahwa itu bukan fisik.</p>
+                </div>
+                <!-- Method 2 -->
+                <div class="method-box">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <h4>2. METODE TAKWIL (Ulama Khalaf)</h4>
+                    <p>Memahami kata "Yad" secara majazi (kiasan/metafora) yang layak bagi keagungan Allah demi menghindari salah paham kaum awam. Biasanya ditakwil sebagai representasi dari <strong>Kekuasaan (Al-Qudrah)</strong> atau <strong>Anugerah</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pillars of Protection (4 Warning Blocks) -->
+        <div>
+            <h3 class="methods-title" style="margin-bottom: 15px;">4 Pilar Larangan: Batasan yang Wajib Dihindari</h3>
+            <div class="pillars-grid">
+                <!-- Pillar 1 -->
+                <div class="pillar-card">
+                    <div class="pillar-num">I</div>
+                    <div class="pillar-title">TASYBIH</div>
+                    <div class="pillar-desc">Menyerupakan rupa atau sifat Allah secara fisik dengan organ ciptaan-Nya.</div>
+                </div>
+                <!-- Pillar 2 -->
+                <div class="pillar-card">
+                    <div class="pillar-num">II</div>
+                    <div class="pillar-title">TAKYIF</div>
+                    <div class="pillar-desc">Mempertanyakan atau mengkhayalkan rupa mekanis cara kerja sifat Allah.</div>
+                </div>
+                <!-- Pillar 3 -->
+                <div class="pillar-card">
+                    <div class="pillar-num">III</div>
+                    <div class="pillar-title">TAHRIF</div>
+                    <div class="pillar-desc">Mengubah arti atau memalingkan teks tanpa landasan dalil bahasa arab yang sah.</div>
+                </div>
+                <!-- Pillar 4 -->
+                <div class="pillar-card">
+                    <div class="pillar-num">IV</div>
+                    <div class="pillar-title">TA'THIL</div>
+                    <div class="pillar-desc">Meniadakan atau menolak sifat asli yang telah ditetapkan Allah dalam syariat.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Golden Rule Callout -->
+        <div class="kaidah-gold">
+            <blockquote>“Laysa Kamitslihi Syai’un Wa Huwas-Sami’ul Bashir”</blockquote>
+            <cite>— QS. Asy-Syura: 11</cite>
+            <p class="kaidah-desc">
+                <strong>Kaidah Emas Akidah Islam:</strong> Ayat ini menafikan segala bentuk keserupaan makhluk (<em>Tanzih</em>) di awal kalimat, sekaligus menetapkan keberadaan Sifat mendengar dan melihat (<em>Itsbat</em>) bagi Allah SWT di akhir kalimat secara sempurna.
+            </p>
+        </div>
+
+        <!-- Footer / Team Identity -->
+        <div class="poster-footer">
+            <div class="footer-left">
+                <p>Disusun untuk memenuhi Tugas Infografis Digital Matakuliah Tauhid</p>
+                <p><strong>Program Studi Teknik Informatika</strong> • Universitas Islam Kalimantan MAB</p>
+            </div>
+            <div class="footer-right">
+                <!-- Member 1 -->
+                <div class="member-badge">
+                    <div class="member-name">Ridho Azizul L.</div>
+                    <div class="member-npm">2410010111</div>
+                </div>
+                <!-- Member 2 -->
+                <div class="member-badge">
+                    <div class="member-name">M. Rifqi Fadhillah</div>
+                    <div class="member-npm">2410010281</div>
+                </div>
+                <!-- Member 3 -->
+                <div class="member-badge">
+                    <div class="member-name">Sukma Sastra W.</div>
+                    <div class="member-npm">2410010462</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+

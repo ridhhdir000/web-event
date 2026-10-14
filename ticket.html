@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets - Bali Heritage Festival</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-logo-container">
+        <img src="logoandhome/logo.png" alt="Logo" class="main-logo-top">
+    </div>
+
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="home.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="festival.html" class="nav-link">Festival</a></li>
+            <li><a href="galery.html" class="nav-link">Gallery</a></li>
+            <li><a href="ticket.html" class="nav-link active">Ticket</a></li>
+        </ul>
+        <div class="nav-auth">
+            <button class="btn-logout" onclick="window.location.href='login.html'">Logout</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2 class="title-bg">AVAILABLE</h2>
+        <h1 class="title-main">EVENT TICKETS</h1>
+
+        <div class="ticket-grid">
+            
+            <div class="ticket-card">
+                <div class="ticket-img-wrapper">
+                    <img src="festival/festival1.webp" alt="Event 1">
+                </div>
+                <div class="ticket-info">
+                    <h3>Parade Budaya & Pembukaan</h3>
+                    <p class="ticket-date">📅 12 Juli 2026</p>
+                    <p class="ticket-price">Rp 75.000</p>
+                    <button class="btn-dark-sm" onclick="alert('Membuka Form Pembelian Tiket Parade Budaya...')">Beli Tiket</button>
+                </div>
+            </div>
+
+            <div class="ticket-card">
+                <div class="ticket-img-wrapper">
+                    <img src="festival/festival2.jpg" alt="Event 2">
+                </div>
+                <div class="ticket-info">
+                    <h3>Pertunjukan Tari Klasik VIP</h3>
+                    <p class="ticket-date">📅 14 Juli 2026</p>
+                    <p class="ticket-price">Rp 150.000</p>
+                    <button class="btn-dark-sm" onclick="alert('Membuka Form Pembelian Tiket Tari Klasik...')">Beli Tiket</button>
+                </div>
+            </div>
+
+            <div class="ticket-card">
+                <div class="ticket-img-wrapper">
+                    <img src="festival/festival3.jpg" alt="Event 3">
+                </div>
+                <div class="ticket-info">
+                    <h3>Malam Puncak Wimbakara</h3>
+                    <p class="ticket-date">📅 18 Juli 2026</p>
+                    <p class="ticket-price">Rp 100.000</p>
+                    <button class="btn-dark-sm" onclick="alert('Membuka Form Pembelian Tiket Malam Puncak...')">Beli Tiket</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="controls-row" style="justify-content: center; margin-top: 60px;">
+            <div class="page-numbers">05 <span>/</span> 05</div>
+            <button class="btn-nav-arrow" onclick="window.location.href='galery.html'">←</button>
+            <button class="btn-nav-arrow" onclick="window.location.href='about.html'">→</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col"><img src="logoandhome/logo.png" alt="Logo"></div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="festival.html">Festival</a></li>
+                    <li><a href="galery.html">Gallery</a></li>
+                    <li><a href="ticket.html">Ticket</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacts</h4>
+                <div class="footer-contact-item">📍 Jalan Raya Ubud No. 88, Gianyar, Bali 80571</div>
+                <div class="footer-contact-item">📞 (0361) 123-4567</div>
+            </div>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <div class="footer-socials"><a href="#">Facebook</a><a href="#">Twitter</a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Bali Heritage Festival. All Rights Reserved.</div>
+    </footer>
+
+</body>
+</html>
